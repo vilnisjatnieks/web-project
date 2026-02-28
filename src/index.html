@@ -59,17 +59,17 @@
         <div class="row">
             <div class="col-md-8">
 
-                <button id="show-form-btn" class="btn btn-success mb-3">Add a game</button>
+                <button id="show-form-btn" class="btn btn-success mb-3">Create a Guide</button>
 
                 <form id="add-game-form" action="localhost:3000" method="POST" style="display: none;">
-                    <h2 class="mb-5">Enter game details</h2>
+                    <h5 class="mb-5">To get started with your guide, fill out the fields below</h5>
                     <ol class="mb-5">
-                        <li> <input class="form-control me-2 mb-3" type="text" placeholder="Enter name" /></li>
-                        <li> <input class="form-control me-2 mb-3" type="text" placeholder="Enter price" /></li>
-                        <li> <input class="form-control me-2 mb-3" type="text" placeholder="Enter image URL" /></li>
+                        <li> <input class="form-control me-2 mb-3" type="text" placeholder="Enter the title for your guide" /></li>
+                        <li> <input class="form-control me-2 mb-3" type="text" placeholder="Enter the game title" /></li>
+                        <li> <textarea class="form-control me-2 mb-3" name="description" rows="4" placeholder="Describe your guide"></textarea> </li>
                     </ol>
 
-                    <button class="btn btn-primary" type="button">Add game</button>
+                    <button class="btn btn-primary" type="submit">Publish</button>
                     <button id="cancel-form-btn" class="btn btn-secondary ms-2" type="button">Cancel</button>
                 </form>
 
