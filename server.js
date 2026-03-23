@@ -1,3 +1,9 @@
+let lstGames = [
+    {_id:1, name:"Marvel Rivals", developer:"NetEase Games"},
+    {_id:2, name:"Dead Island", developer:"Deep Silver"},
+    {_id:3, name:"EA Sports FC 26", developer:"EA (Vancouver & Romania)"}
+];
+
 let hostname = "localhost";
 let port = 3001;
 
@@ -8,6 +14,13 @@ const app = express(); //creates server
 app.use(morgan('dev')); //logging
 
 app.use(express.static('public'));
+
+app.get("/games", function(req,res){
+    res.status(200);
+    res.send(lstGames);
+    res.end();
+});
+//app.post();
 
 const server = app.listen(port, hostname, function(){
     console.log(`Server running on ${hostname}:${port}`);
