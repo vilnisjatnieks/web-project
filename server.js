@@ -26,7 +26,7 @@ app.get("/game/:game_id", function(req,res){
     let game_id = parseInt(req.params.game_id);
     let game = null;
     for(let i=0;i<lstGames.length;i++){
-        if(lstGames[i] === game_id){
+        if(lstGames[i]._id === game_id){
             game = lstGames[i];
             break;
         }
