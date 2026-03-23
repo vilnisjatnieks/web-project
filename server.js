@@ -20,6 +20,19 @@ app.get("/games", function(req,res){
     res.send(lstGames);
     res.end();
 });
+
+app.get("/games/:id", function(req,res){
+    let id = parseInt(req.params.id);
+    let game = null;
+    for(let i=0;i<lstGames.length;i++){
+        if(lstGames[i] === id){
+            game = lstGames[i];
+            break;
+        }
+    }
+
+    res.send(game);
+});
 //app.post();
 
 const server = app.listen(port, hostname, function(){
