@@ -21,7 +21,8 @@ app.get("/games", function(req,res){
     res.end();
 });
 
-app.get("/games/:id", function(req,res){
+//doesn't work, needs to be fixed
+app.get("/game/:id", function(req,res){
     let id = parseInt(req.params.id);
     let game = null;
     for(let i=0;i<lstGames.length;i++){
