@@ -22,11 +22,11 @@ app.get("/games", function(req,res){
 });
 
 //doesn't work, needs to be fixed
-app.get("/game/:id", function(req,res){
-    let id = parseInt(req.params.id);
+app.get("/game/:game_id", function(req,res){
+    let game_id = parseInt(req.params.game_id);
     let game = null;
     for(let i=0;i<lstGames.length;i++){
-        if(lstGames[i] === id){
+        if(lstGames[i] === game_id){
             game = lstGames[i];
             break;
         }
