@@ -1,4 +1,21 @@
-const http = require('http');
+let hostname = "localhost";
+let port = 3001;
+
+const express = require('express');
+const morgan = require('morgan');
+
+const app = express(); //creates server
+app.use(morgan('dev')); //logging
+
+app.use(express.static('public'));
+
+const server = app.listen(port, hostname, function(){
+    console.log(`Server running on ${hostname}:${port}`);
+});
+
+
+
+/*const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
@@ -45,4 +62,4 @@ const server = http.createServer(function(req, res){
     });
 })
 server.listen(4000);
-console.log('Server running on 4000');
+console.log('Server running on 4000');*/
