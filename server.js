@@ -1,7 +1,12 @@
 let lstGames = [
-    {_id:1, name:"Marvel Rivals", developer:"NetEase Games"},
-    {_id:2, name:"Dead Island", developer:"Deep Silver"},
-    {_id:3, name:"EA Sports FC 26", developer:"EA (Vancouver & Romania)"}
+    { _id: 1, name: "Marvel Rivals", developer: "NetEase Games" },
+    { _id: 2, name: "Dead Island", developer: "Deep Silver" },
+    { _id: 3, name: "EA Sports FC 26", developer: "EA (Vancouver & Romania)" },
+    { _id: 4, name: "Cyberpunk 2077", developer: "CD Projekt Red" },
+    { _id: 5, name: "Elden Ring", developer: "FromSoftware" },
+    { _id: 6, name: "Grand Theft Auto VI", developer: "Rockstar Games" },
+    { _id: 7, name: "Baldur's Gate 3", developer: "Larian Studios" },
+    { _id: 8, name: "Hades II", developer: "Supergiant Games" }
 ];
 
 let hostname = "localhost";
@@ -15,16 +20,16 @@ app.use(morgan('dev')); //logging
 
 app.use(express.static('public'));
 
-app.get("/games", function(req,res){
+app.get("/games", function (req, res) {
     res.status(200);
     res.send(lstGames);
     res.end();
 });
 
-app.get("/game/:game_id", function(req,res){
+app.get("/game/:game_id", function (req, res) {
     let game_id = parseInt(req.params.game_id);
     let game = lstGames.find(g => g._id === game_id);
-    
+
     if (game) {
         res.status(200).json(game);
     } else {
@@ -33,7 +38,7 @@ app.get("/game/:game_id", function(req,res){
 });
 //app.post();
 
-const server = app.listen(port, hostname, function(){
+const server = app.listen(port, hostname, function () {
     console.log(`Server running on ${hostname}:${port}`);
 });
 
