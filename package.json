@@ -10,6 +10,7 @@
   },
   "scripts": {
     "test": "jest",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "dev": "node server.js"
   }
 }
