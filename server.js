@@ -21,18 +21,15 @@ app.get("/games", function(req,res){
     res.end();
 });
 
-//doesn't work, needs to be fixed
 app.get("/game/:game_id", function(req,res){
     let game_id = parseInt(req.params.game_id);
-    let game = null;
-    for(let i=0;i<lstGames.length;i++){
-        if(lstGames[i]._id === game_id){
-            game = lstGames[i];
-            break;
-        }
+    let game = lstGames.find(g => g._id === game_id);
+    
+    if (game) {
+        res.status(200).json(game);
+    } else {
+        res.status(404).json({ error: "Game not found" });
     }
-
-    res.send(game);
 });
 //app.post();
 
