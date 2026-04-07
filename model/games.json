@@ -1,0 +1,79 @@
+[
+  {
+    "_id": 1,
+    "name": "Marvel Rivals",
+    "developer": "NetEase Games",
+    "genre": "Hero Shooter",
+    "description": "A team-based hero shooter featuring Marvel superheroes and villains battling across iconic locations from the Marvel universe."
+  },
+  {
+    "_id": 2,
+    "name": "Dead Island",
+    "developer": "Deep Silver",
+    "genre": "Action RPG",
+    "description": "Survive a tropical paradise overrun by the undead. Craft weapons, scavenge resources, and fight your way off the island."
+  },
+  {
+    "_id": 3,
+    "name": "EA Sports FC 26",
+    "developer": "EA (Vancouver & Romania)",
+    "genre": "Sports",
+    "description": "The latest installment in EA's football simulation franchise, featuring updated rosters and improved gameplay mechanics."
+  },
+  {
+    "_id": 4,
+    "name": "Cyberpunk 2077",
+    "developer": "CD Projekt Red",
+    "genre": "Action RPG",
+    "description": "An open-world action RPG set in the dystopian Night City, where you play as mercenary V chasing a legend that grants immortality."
+  },
+  {
+    "_id": 5,
+    "name": "Elden Ring",
+    "developer": "FromSoftware",
+    "genre": "Action RPG",
+    "description": "An open-world action RPG crafted by FromSoftware and George R.R. Martin, set in the shattered realm known as the Lands Between."
+  },
+  {
+    "_id": 6,
+    "name": "Grand Theft Auto VI",
+    "developer": "Rockstar Games",
+    "genre": "Action Adventure",
+    "description": "Rockstar's long-awaited return to Vice City, following dual protagonists including the franchise's first playable female lead."
+  },
+  {
+    "_id": 7,
+    "name": "Baldur's Gate 3",
+    "developer": "Larian Studios",
+    "genre": "RPG",
+    "description": "A story-rich turn-based RPG set in the Dungeons & Dragons universe, featuring deep choices, co-op play, and branching consequences."
+  },
+  {
+    "_id": 8,
+    "name": "Hades II",
+    "developer": "Supergiant Games",
+    "genre": "Roguelike",
+    "description": "The sequel to the acclaimed roguelike, following Melinoe, Princess of the Underworld, on her quest against the Titan of Time."
+  },
+  {
+    "_id": 9,
+    "name": "Infinity Blade",
+    "developer": "Chair Entertainment",
+    "genre": "Action RPG",
+    "description": "A sword-fighting RPG where you face the God King and his immortal army through a mysterious castle, mastering combat across generations."
+  },
+  {
+    "_id": 10,
+    "name": "Infinity Blade II",
+    "developer": "Chair Entertainment",
+    "genre": "Action RPG",
+    "description": "The sequel expands the world with new locations, weapon classes, and a deeper story as Siris uncovers the secrets of the Infinity Blade."
+  },
+  {
+    "_id": 11,
+    "name": "Infinity Blade III",
+    "developer": "Chair Entertainment",
+    "genre": "Action RPG",
+    "description": "The epic conclusion to the trilogy, featuring dual protagonists Siris and Isa in the final battle against the Worker of Secrets."
+  }
+]
