@@ -12,5 +12,8 @@
     "test": "jest",
     "coverage": "jest --coverage",
     "dev": "node server.js"
+  },
+  "jest": {
+    "testPathIgnorePatterns": ["/node_modules/", "/WebProgS26/"]
   }
 }
