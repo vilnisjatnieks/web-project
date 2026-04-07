@@ -1,7 +1,6 @@
 const fs = require('fs').promises;
-const path = require('path');
 
-const FILE_PATH = path.join(__dirname, 'games.json');
+const FILE_PATH = './model/games.json';
 
 exports.readAll = async function () {
     const data = await fs.readFile(FILE_PATH, 'utf8');

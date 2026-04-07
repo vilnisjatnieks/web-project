@@ -137,3 +137,12 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Course folder
+WebProgS26/
+
+# Local plan file
+PLAN.md
+
+# Package.json
+package.json

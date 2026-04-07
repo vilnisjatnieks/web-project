@@ -1,6 +1,6 @@
 const fs = require('fs').promises;
 const path = require('path');
-const dao = require('./GameDaoFile');
+const dao = require('./GameDao');
 
 const FILE_PATH = path.join(__dirname, 'games.json');
 
