@@ -7,3 +7,6 @@ Updraft GG is a video game distribution platform. It will operate as a direct co
 ### Run
 - Install dependencies with `npm install`
 - Start the server with `npm run dev`
+
+### Assignment 4
+Visit directory.html for game CRUD
