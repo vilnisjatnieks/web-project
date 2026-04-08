@@ -18,7 +18,7 @@
     <!-- Start Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">Storm Logo</a>
+            <a class="navbar-brand" href="index.html">Storm Logo</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -30,6 +30,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="directory.html">Directory</a>
                     </li>
                 </ul>
                 <form class="d-flex ms-3" role="search">
@@ -61,7 +64,7 @@
 
                 <button id="show-form-btn" class="btn btn-success mb-3">Create a Guide</button>
 
-                <form id="add-game-form" action="http://localhost:3000" method="POST" style="display: none;">
+                <form id="add-game-form" action="http://localhost:3001" method="POST" style="display: none;">
                     <h5 class="mb-5">To get started with your guide, fill out the fields below</h5>
                     <ol class="mb-5">
                         <li> <input class="form-control me-2 mb-3" type="text" placeholder="Enter the title for your guide" /></li>
@@ -73,11 +76,20 @@
                     <button id="cancel-form-btn" class="btn btn-secondary ms-2" type="button">Cancel</button>
                 </form>
 
+                <div class="card-container">
+                    <div class="card-content">
+                        <h1>Bing Bong</h1>
+                    </div>
+                </div>
+
             </div>
+
             <div class="col-md-4">
-                <h3>Current games</h3>
-                <div id="games-list" class="list-group">
-                    <p class="text-muted">Loading games...</p>
+                <div class="aside-content text-md-end">
+                    <h3>Current games</h3>
+                    <div id="games-list" class="list-group">
+                        <p class="text-muted">Loading games...</p>
+                    </div>
                 </div>
             </div>
         </div>
