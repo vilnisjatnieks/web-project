@@ -29,6 +29,7 @@ function resetForm() {
     document.getElementById('modal-add-game-form')?.reset();
 }
 
+// this function populates the edit modal with the selected game's data and opens it
 function showGame(g) {
     document.getElementById('gameViewTitle').textContent = g.name;
     document.getElementById('editTxtId').value = g._id;
@@ -39,6 +40,7 @@ function showGame(g) {
     bootstrap.Modal.getOrCreateInstance(document.getElementById('gameViewModal')).show();
 }
 
+// this function saves edits to an existing game by POSTing to the backend and refreshing the table
 document.getElementById('modal-edit-game-form')?.addEventListener('submit', async e => {
     e.preventDefault();
     const res = await fetch('/game', {
@@ -52,11 +54,13 @@ document.getElementById('modal-edit-game-form')?.addEventListener('submit', asyn
     }
 });
 
+// this function opens the delete confirmation modal with the selected game's name
 document.getElementById('deleteGameBtn')?.addEventListener('click', () => {
     document.getElementById('deleteGameName').textContent = document.getElementById('editTxtName').value;
     bootstrap.Modal.getOrCreateInstance(document.getElementById('gameDeleteModal')).show();
 });
 
+// this function deletes the game from the backend and closes both modals
 document.getElementById('confirmDeleteBtn')?.addEventListener('click', async () => {
     const id = document.getElementById('editTxtId').value;
     await fetch(`/deletegame/${id}`);
