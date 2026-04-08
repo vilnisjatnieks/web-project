@@ -1,3 +1,36 @@
+// directory.html — populate games table
+const gamedata = document.getElementById('gamedata');
+if (gamedata) {
+    fetch('/games')
+        .then(res => res.json())
+        .then(games => {
+            gamedata.innerHTML = '';
+            games.forEach(game => {
+                const row = document.createElement('tr');
+                const desc = game.description || '';
+                const truncated = desc.length > 60 ? desc.slice(0, 60) + '…' : desc;
+                row.innerHTML = `
+                    <td><input type="checkbox" /></td>
+                    <td>${game._id}</td>
+                    <td>${game.name}</td>
+                    <td>${game.developer}</td>
+                    <td>${game.genre}</td>
+                    <td>${truncated}</td>
+                `;
+                gamedata.appendChild(row);
+            });
+        })
+        .catch(err => {
+            console.error('Failed to fetch games', err);
+            gamedata.innerHTML = '<tr><td colspan="6" class="text-danger">Failed to load games.</td></tr>';
+        });
+}
+
+function resetForm() {
+    const form = document.getElementById('modal-add-game-form');
+    if (form) form.reset();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const showFormBtn = document.getElementById('show-form-btn');
     const cancelFormBtn = document.getElementById('cancel-form-btn');
