@@ -26,7 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     item.className = 'list-group-item';
                     item.innerHTML = `
                         <h6 class="mb-1">${game.name}</h6>
-                        <small class="text-muted">${game.developer}</small>
+                        <small class="text-muted">${game.developer} &mdash; ${game.genre}</small>
+                        <p class="mb-0 mt-1 small">${game.description}</p>
                     `;
                     gamesList.appendChild(item);
                 });

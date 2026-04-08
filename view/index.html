@@ -62,14 +62,16 @@
         <div class="row">
             <div class="col-md-8">
 
-                <button id="show-form-btn" class="btn btn-success mb-3">Create a Guide</button>
+                <button id="show-form-btn" class="btn btn-success mb-3">Create a Game</button>
 
-                <form id="add-game-form" action="http://localhost:3001" method="POST" style="display: none;">
-                    <h5 class="mb-5">To get started with your guide, fill out the fields below</h5>
+                <form id="add-game-form" action="/game" method="POST" style="display: none;">
+                    <h5 class="mb-5">Fill out the fields below to add a game</h5>
+                    <input type="hidden" name="txt_id" value="" />
                     <ol class="mb-5">
-                        <li> <input class="form-control me-2 mb-3" type="text" placeholder="Enter the title for your guide" /></li>
-                        <li> <input class="form-control me-2 mb-3" type="text" placeholder="Enter the game title" /></li>
-                        <li> <textarea class="form-control me-2 mb-3" name="description" rows="4" placeholder="Describe your guide"></textarea> </li>
+                        <li><input class="form-control me-2 mb-3" type="text" name="txt_name" placeholder="Game title" /></li>
+                        <li><input class="form-control me-2 mb-3" type="text" name="txt_developer" placeholder="Developer" /></li>
+                        <li><input class="form-control me-2 mb-3" type="text" name="txt_genre" placeholder="Genre (e.g. Hero Shooter)" /></li>
+                        <li><textarea class="form-control me-2 mb-3" name="txt_description" rows="4" placeholder="Describe the game"></textarea></li>
                     </ol>
 
                     <button class="btn btn-primary" type="submit">Publish</button>
