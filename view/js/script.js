@@ -1,6 +1,7 @@
 // directory.html — populate games table
-const gamedata = document.getElementById('gamedata');
-if (gamedata) {
+function loadGames() {
+    const gamedata = document.getElementById('gamedata');
+    if (!gamedata) return;
     fetch('/games')
         .then(res => res.json())
         .then(games => {
@@ -22,13 +23,37 @@ if (gamedata) {
         })
         .catch(err => {
             console.error('Failed to fetch games', err);
-            gamedata.innerHTML = '<tr><td colspan="6" class="text-danger">Failed to load games.</td></tr>';
+            document.getElementById('gamedata').innerHTML =
+                '<tr><td colspan="6" class="text-danger">Failed to load games.</td></tr>';
         });
 }
+
+loadGames();
 
 function resetForm() {
     const form = document.getElementById('modal-add-game-form');
     if (form) form.reset();
+}
+
+// intercept modal form submit — stay on directory.html
+const modalForm = document.getElementById('modal-add-game-form');
+if (modalForm) {
+    modalForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        fetch('/game', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(new FormData(modalForm))
+        })
+        .then(res => {
+            if (res.ok) {
+                bootstrap.Modal.getInstance(document.getElementById('gameFormModal')).hide();
+                resetForm();
+                loadGames();
+            }
+        })
+        .catch(err => console.error('Failed to save game', err));
+    });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
