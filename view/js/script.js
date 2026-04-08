@@ -24,7 +24,7 @@ async function loadGames() {
     }
 }
 
-// this functions ensures that the game creation modal is cleared before the user accesses it again
+// this function ensures that the game creation modal is cleared before the user accesses it again
 function resetForm() {
     document.getElementById('modal-add-game-form')?.reset();
 }
