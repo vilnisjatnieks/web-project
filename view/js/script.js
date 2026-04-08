@@ -1,8 +1,9 @@
+// this function makes it easier to fetch games
 async function fetchGames() {
     return fetch('/games').then(r => r.json());
 }
 
-// directory.html — load games into table
+// this function is used in directory.html. it dynamically loads games into the CRUD table
 async function loadGames() {
     const gamedata = document.getElementById('gamedata');
     if (!gamedata) return;
@@ -18,10 +19,12 @@ async function loadGames() {
     }
 }
 
+// this functions ensures that the game creation modal is cleared before the user accesses it again
 function resetForm() {
     document.getElementById('modal-add-game-form')?.reset();
 }
 
+// this function intercepts the modal form submit, POSTs the game to the backend, then closes the modal and refreshes the table
 document.getElementById('modal-add-game-form')?.addEventListener('submit', async e => {
     e.preventDefault();
     const res = await fetch('/game', {
@@ -38,7 +41,7 @@ document.getElementById('modal-add-game-form')?.addEventListener('submit', async
 
 loadGames();
 
-// index.html — form toggle + sidebar
+// this function provides the form toggle and sidebar on index.html
 document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('show-form-btn')?.addEventListener('click', () => {
         document.getElementById('add-game-form').style.display = 'block';
