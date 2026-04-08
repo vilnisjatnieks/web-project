@@ -1,98 +1,67 @@
-// directory.html — populate games table
-function loadGames() {
+async function fetchGames() {
+    return fetch('/games').then(r => r.json());
+}
+
+// directory.html — load games into table
+async function loadGames() {
     const gamedata = document.getElementById('gamedata');
     if (!gamedata) return;
-    fetch('/games')
-        .then(res => res.json())
-        .then(games => {
-            gamedata.innerHTML = '';
-            games.forEach(game => {
-                const row = document.createElement('tr');
-                const desc = game.description || '';
-                const truncated = desc.length > 60 ? desc.slice(0, 60) + '…' : desc;
-                row.innerHTML = `
-                    <td><input type="checkbox" /></td>
-                    <td>${game._id}</td>
-                    <td>${game.name}</td>
-                    <td>${game.developer}</td>
-                    <td>${game.genre}</td>
-                    <td>${truncated}</td>
-                `;
-                gamedata.appendChild(row);
-            });
-        })
-        .catch(err => {
-            console.error('Failed to fetch games', err);
-            document.getElementById('gamedata').innerHTML =
-                '<tr><td colspan="6" class="text-danger">Failed to load games.</td></tr>';
-        });
+    try {
+        const games = await fetchGames();
+        gamedata.innerHTML = games.map(g => {
+            const desc = (g.description || '').slice(0, 60) + (g.description?.length > 60 ? '…' : '');
+            return `<tr><td><input type="checkbox"></td><td>${g._id}</td><td>${g.name}</td><td>${g.developer}</td><td>${g.genre}</td><td>${desc}</td></tr>`;
+        }).join('');
+    } catch (err) {
+        console.error('Failed to fetch games', err);
+        gamedata.innerHTML = '<tr><td colspan="6" class="text-danger">Failed to load games.</td></tr>';
+    }
 }
+
+function resetForm() {
+    document.getElementById('modal-add-game-form')?.reset();
+}
+
+document.getElementById('modal-add-game-form')?.addEventListener('submit', async e => {
+    e.preventDefault();
+    const res = await fetch('/game', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(e.target))
+    });
+    if (res.ok) {
+        bootstrap.Modal.getInstance(document.getElementById('gameFormModal')).hide();
+        resetForm();
+        loadGames();
+    }
+});
 
 loadGames();
 
-function resetForm() {
-    const form = document.getElementById('modal-add-game-form');
-    if (form) form.reset();
-}
-
-// intercept modal form submit — stay on directory.html
-const modalForm = document.getElementById('modal-add-game-form');
-if (modalForm) {
-    modalForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        fetch('/game', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: new URLSearchParams(new FormData(modalForm))
-        })
-        .then(res => {
-            if (res.ok) {
-                bootstrap.Modal.getInstance(document.getElementById('gameFormModal')).hide();
-                resetForm();
-                loadGames();
-            }
-        })
-        .catch(err => console.error('Failed to save game', err));
+// index.html — form toggle + sidebar
+document.addEventListener('DOMContentLoaded', async () => {
+    document.getElementById('show-form-btn')?.addEventListener('click', () => {
+        document.getElementById('add-game-form').style.display = 'block';
+        document.getElementById('show-form-btn').style.display = 'none';
     });
-}
+    document.getElementById('cancel-form-btn')?.addEventListener('click', () => {
+        document.getElementById('add-game-form').style.display = 'none';
+        document.getElementById('show-form-btn').style.display = 'block';
+    });
 
-document.addEventListener('DOMContentLoaded', () => {
-    const showFormBtn = document.getElementById('show-form-btn');
-    const cancelFormBtn = document.getElementById('cancel-form-btn');
-    const addGameForm = document.getElementById('add-game-form');
     const gamesList = document.getElementById('games-list');
-
-    if (showFormBtn && cancelFormBtn && addGameForm) {
-        showFormBtn.addEventListener('click', () => {
-            addGameForm.style.display = 'block';
-            showFormBtn.style.display = 'none';
-        });
-
-        cancelFormBtn.addEventListener('click', () => {
-            addGameForm.style.display = 'none';
-            showFormBtn.style.display = 'block';
-        });
-    }
-
     if (gamesList) {
-        fetch('/games')
-            .then(res => res.json())
-            .then(games => {
-                gamesList.innerHTML = '';
-                games.forEach(game => {
-                    const item = document.createElement('div');
-                    item.className = 'list-group-item';
-                    item.innerHTML = `
-                        <h6 class="mb-1">${game.name}</h6>
-                        <small class="text-muted">${game.developer} &mdash; ${game.genre}</small>
-                        <p class="mb-0 mt-1 small">${game.description}</p>
-                    `;
-                    gamesList.appendChild(item);
-                });
-            })
-            .catch(err => {
-                console.error("Failed to fetch games", err);
-                gamesList.innerHTML = '<p class="text-danger">Failed to load games.</p>';
-            });
+        try {
+            const games = await fetchGames();
+            gamesList.innerHTML = games.map(g => `
+                <div class="list-group-item">
+                    <h6 class="mb-1">${g.name}</h6>
+                    <small class="text-muted">${g.developer} &mdash; ${g.genre}</small>
+                    <p class="mb-0 mt-1 small">${g.description}</p>
+                </div>`).join('');
+        } catch (err) {
+            console.error('Failed to fetch games', err);
+            gamesList.innerHTML = '<p class="text-danger">Failed to load games.</p>';
+        }
     }
 });
