@@ -1,12 +1,5 @@
 [
   {
-    "_id": 1,
-    "name": "Marvel Rivals",
-    "developer": "NetEase Games",
-    "genre": "Hero Shooter",
-    "description": "A team-based hero shooter featuring Marvel superheroes and villains battling across iconic locations from the Marvel universe."
-  },
-  {
     "_id": 2,
     "name": "Dead Island",
     "developer": "Deep Silver",
@@ -75,5 +68,19 @@
     "developer": "Chair Entertainment",
     "genre": "Action RPG",
     "description": "The epic conclusion to the trilogy, featuring dual protagonists Siris and Isa in the final battle against the Worker of Secrets."
+  },
+  {
+    "name": "Mysterious Game",
+    "developer": "Me",
+    "genre": "Mystery",
+    "description": "A cool game",
+    "_id": 12
+  },
+  {
+    "_id": 13,
+    "name": "Database Designer",
+    "developer": "TerraER Studios",
+    "genre": "Puzzle Game",
+    "description": "A fun educational game. Here's an example of editing a game."
   }
 ]
