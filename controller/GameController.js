@@ -1,4 +1,4 @@
-const dao = require('../model/GameDao');
+const dao = require('../model/GameDaoMongoose');
 
 exports.getAll = async function (req, res) {
     res.status(200);
