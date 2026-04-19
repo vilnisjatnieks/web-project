@@ -7,7 +7,7 @@ exports.getAll = async function (req, res) {
 };
 
 exports.get = async function (req, res) {
-    let game_id = parseInt(req.params.game_id);
+    let game_id = req.params.game_id;
     let game = await dao.read(game_id);
 
     if (game != null) {
@@ -28,8 +28,7 @@ exports.postCreateUpdate = async function (req, res) {
     let gdescription = req.body.txt_description;
 
     if (req.body.txt_id && req.body.txt_id !== '') {
-        let gid = parseInt(req.body.txt_id);
-        let updatedGame = { _id: gid, name: gname, developer: gdeveloper, genre: ggenre, description: gdescription };
+        let updatedGame = { _id: req.body.txt_id, name: gname, developer: gdeveloper, genre: ggenre, description: gdescription };
         await dao.update(updatedGame);
     } else {
         let newGame = { name: gname, developer: gdeveloper, genre: ggenre, description: gdescription };
@@ -40,7 +39,7 @@ exports.postCreateUpdate = async function (req, res) {
 };
 
 exports.getDelete = async function (req, res) {
-    let game_id = parseInt(req.params.game_id);
+    let game_id = req.params.game_id;
     await dao.del(game_id);
     res.redirect('/?manage=1');
 };

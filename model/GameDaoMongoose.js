@@ -11,7 +11,7 @@ const gameSchema = mongoose.Schema({
 const gameModel = mongoose.model('game', gameSchema);
 
 
-//CRUD
+//CRUD operations
 exports.create = async function(game){
     const mongoGame = new gameModel(game);
     await mongoGame.save();
